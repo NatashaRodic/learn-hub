@@ -42,7 +42,7 @@ async function login(req, res) {
 function createJWT(user) {
   return jwt.sign(
     // data payload
-    { user },
+    { user: { id: user._id, role: user.role, name: user.name, email: user.email }},
     process.env.SECRET,
     { expiresIn: '24h' }
   );

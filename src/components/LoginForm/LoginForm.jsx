@@ -4,7 +4,8 @@ import * as usersService from '../../utilities/users-service';
 export default function LoginForm({ setUser }) {
   const [credentials, setCredentials] = useState({
     email: '',
-    password: ''
+    password: '',
+    role: 'student' // Default role
   });
   const [error, setError] = useState('');
 
@@ -17,7 +18,7 @@ export default function LoginForm({ setUser }) {
     // Prevent form from being submitted to the server
     evt.preventDefault();
     try {
-      // The promise returned by the signUp service method 
+      // The promise returned by the login service method 
       // will resolve to the user object included in the
       // payload of the JSON Web Token (JWT)
       const user = await usersService.login(credentials);
@@ -35,6 +36,11 @@ export default function LoginForm({ setUser }) {
           <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
           <label>Password</label>
           <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
+          <label>Role</label>
+          <select name="role" value={credentials.role} onChange={handleChange}>
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+          </select>
           <button type="submit">LOG IN</button>
         </form>
       </div>

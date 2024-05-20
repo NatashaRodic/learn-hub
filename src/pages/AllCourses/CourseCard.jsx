@@ -13,7 +13,7 @@ function CourseCard({ courseInfo }) {
             <div className="courseDescription"><p>{courseInfo.content}</p></div>
             <p className='details'>Duration: {courseInfo.duration} weeks</p>
             <p className='details'>Skill level required: {levelBars}</p>
-            <p> <a href={`courses/${courseInfo._id}}/apply`}>Apply</a></p>
+            <p> <a href={`courses/${courseInfo._id}/apply`}>Apply</a></p>
 
         </div>
     )

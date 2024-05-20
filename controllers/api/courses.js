@@ -2,6 +2,7 @@ const Course = require('../../models/course');
 
 module.exports = {
     index,
+    show
 };
 
 async function index(req, res) {
@@ -10,4 +11,7 @@ async function index(req, res) {
     res.json(course);
 }
 
-
+async function show(req, res) {
+    const course = await Course.findById(req.params.id);
+    res.json(course);
+}

@@ -1,13 +1,21 @@
 import { useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-// import * as coursesAPI from '../../utilities/courses-api';
+import * as coursesAPI from '../../utilities/courses-api';
 import * as applicationsAPI from '../../utilities/applications-api';
 
 export default function ApplicationPage() {
     const { courseId } = useParams();
     const [personalStatement, setPersonalStatement] = useState('');
-    const [commitPerWeek, setCommitPerWeek] = useState(0);
-    // const [courseInfo, setCourseInfo] = useState(null);
+    const [commitPerWeek, setCommitPerWeek] = useState('');
+    const [courseInfo, setCourseInfo] = useState(null);
+
+    useEffect(function() {
+        async function getCourse() {
+            const course = await coursesAPI.getById(courseId);
+            setCourseInfo(course);
+        }
+        getCourse();
+    }, [courseId]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,7 +34,13 @@ export default function ApplicationPage() {
 
     return (
         <>
-            <h1>Course Detail Page</h1>
+            <h1>Application Form Page</h1>
+            {courseInfo && (
+                <>
+                    <h2>You're applying to... <span style={{ color: 'blue', fontSize: '24px', fontWeight: 'bold' }}>{courseInfo.name}</span></h2>
+                    <div className="courseDescription"><p>{courseInfo.content}</p></div>
+                </>
+            )}
             <form onSubmit={handleSubmit}>
                 <label>What's your motivation to apply this course?</label>
                 <textarea

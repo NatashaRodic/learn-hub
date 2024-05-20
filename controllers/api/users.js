@@ -20,6 +20,7 @@ async function create(req, res) {
     const token = createJWT(user);
     res.json(token);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 }
@@ -42,7 +43,7 @@ async function login(req, res) {
 function createJWT(user) {
   return jwt.sign(
     // data payload
-    { user },
+    { user: { id: user._id, role: user.role, name: user.name, email: user.email }},
     process.env.SECRET,
     { expiresIn: '24h' }
   );

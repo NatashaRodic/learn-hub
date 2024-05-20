@@ -4,7 +4,7 @@ import { getUser } from '../../utilities/users-service';
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import NewCourse from '../NewCourse/NewCourse';
-import OrderHistoryPage from '../AllCourses/AllCourses';
+// import OrderHistoryPage from '../AllCourses/AllCourses';
 import NavBar from '../../components/NavBar/NavBar';
 import AllCourses from '../AllCourses/AllCourses';
 

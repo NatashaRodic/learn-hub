@@ -1,13 +1,19 @@
 import React from 'react'
 
 function CourseCard({ courseInfo }) {
+    // const pipes = Array.from({ length: parm }, (_, index) => '|'.repeat(parm - index)).join(' ');
+    let levelBars = ""
+    for (let index = 0; index < courseInfo.skillLevel; index++) {
+        levelBars = levelBars + " 🟩";
+
+    }
     return (
         <div className='courseCard'>
             <h2>{courseInfo.name}</h2>
             <div className="courseDescription"><p>{courseInfo.content}</p></div>
-            <p>Duration: {courseInfo.duration} weeks</p>
-            <p>Skill level required: {courseInfo.skillLevel}</p>
-            <p> <a href="http://"></a></p>
+            <p className='details'>Duration: {courseInfo.duration} weeks</p>
+            <p className='details'>Skill level required: {levelBars}</p>
+            <p> <a href={`courses/${courseInfo._id}}`}>Apply</a></p>
 
         </div>
     )

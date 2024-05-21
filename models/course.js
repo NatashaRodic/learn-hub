@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const courseSchema = new Schema({
     name: { type: String, required: true },
-    content: { type: String, required: true },
+    description: { type: String, required: true },
+    content: { type: String, },
     duration: { type: Number, required: true },
     skillLevel: {
         type: Number,

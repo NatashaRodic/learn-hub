@@ -20,6 +20,7 @@ export default function CourseCardDetails() {
         <>
             <h1>Course Details</h1>
             <h1>{courseDetails.name}</h1>
+            <p>{courseDetails.description}</p>
             <p>{courseDetails.content}</p>
             <p>{courseDetails.duration} weeks</p>
             <p> Skill level for this course is {courseDetails.skillLevel}, on the scale 1-10 </p>

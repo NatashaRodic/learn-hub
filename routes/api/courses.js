@@ -14,7 +14,7 @@ router.post('/', coursesCtrl.create);
 router.get('/:id', coursesCtrl.show);
 
 // GET /api/courses/:id
-router.get('/:id/details', coursesCtrl.showDetails)
+router.get('/:id/details', coursesCtrl.show)
 
 
 module.exports = router;

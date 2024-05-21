@@ -12,3 +12,7 @@ export async function getById(courseId) {
 export async function createNew(newCourse) {
     return sendRequest(BASE_URL, 'POST', newCourse);
 }
+
+export async function deleteCourse(courseId) {
+    return sendRequest(`${BASE_URL}/${courseId}`, 'DELETE');
+}

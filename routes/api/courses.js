@@ -13,5 +13,8 @@ router.post('/', coursesCtrl.create);
 // GET /api/courses/:id
 router.get('/:id', coursesCtrl.show);
 
+// DELETE /api/courses/:id
+router.delete('/:id', coursesCtrl.delete);
+
 
 module.exports = router;

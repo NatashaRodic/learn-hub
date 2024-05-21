@@ -4,8 +4,18 @@ const User = require('../../models/user');
 module.exports = {
     index,
     show,
-    create
+    create,
+    delete: deleteCourse
 };
+
+async function deleteCourse(req, res) {
+    try {
+        await Course.findByIdAndDelete(req.params.id);
+        res.json({});
+    } catch (err) {
+        res.status(400).json(err);
+    }
+}
 
 async function index(req, res) {
     const course = await Course.find({});

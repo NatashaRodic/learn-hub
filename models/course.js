@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Application = require('./application');
 
 const courseSchema = new Schema({
     name: { type: String, required: true },

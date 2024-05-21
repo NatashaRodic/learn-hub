@@ -1,6 +1,7 @@
 import { getToken } from './users-service';
 
 export default async function sendRequest(url, method = 'GET', payload = null) {
+  console.log('I am here')
   // Fetch accepts an options object as the 2nd argument
   // used to include a data payload, set headers, specifiy the method, etc.
   const options = { method };

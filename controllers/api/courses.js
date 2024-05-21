@@ -1,5 +1,6 @@
 const Course = require('../../models/course');
-const User = require('../../models/user');
+const Application = require('../../models/application');
+
 
 module.exports = {
     index,
@@ -10,7 +11,10 @@ module.exports = {
 
 async function deleteCourse(req, res) {
     try {
-        await Course.findByIdAndDelete(req.params.id);
+        const applicationsDeleted = await Application.deleteMany({ course: req.params.id });
+        const courseDeleted = await Course.findByIdAndDelete(req.params.id);
+        console.log(`Deleted ${applicationsDeleted.deletedCount} applications related to course ${req.params.id}`);
+        console.log(`Delete course ${courseDeleted}`);
         res.json({});
     } catch (err) {
         res.status(400).json(err);

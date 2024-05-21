@@ -1,9 +1,7 @@
-import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import * as coursesAPI from '../../utilities/courses-api';
 
 function CourseCard({ courseInfo, onDelete }) {
-    const navigate = useNavigate();
     // const pipes = Array.from({ length: parm }, (_, index) => '|'.repeat(parm - index)).join(' ');
     
     let levelBars = ""

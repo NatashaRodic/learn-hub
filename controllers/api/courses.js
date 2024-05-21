@@ -5,7 +5,6 @@ module.exports = {
     index,
     show,
     create,
-    showDetails
 };
 
 async function index(req, res) {
@@ -31,10 +30,4 @@ async function create(req, res) {
 
     const savedCourse = await course.save();
     res.json(savedCourse);
-}
-
-
-async function showDetails(req, res) {
-    const course = await Course.findById(req.params.id);
-    res.json(course);
 }

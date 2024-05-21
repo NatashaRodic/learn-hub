@@ -18,7 +18,6 @@ async function show(req, res) {
     if (!application) {
         return res.json(null);
     }
-    
     res.json(application);
 };
 

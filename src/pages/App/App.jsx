@@ -7,7 +7,7 @@ import NewCourse from '../NewCourse/NewCourse';
 import NavBar from '../../components/NavBar/NavBar';
 import AllCourses from '../AllCourses/AllCourses';
 import ApplicationPage from '../ApplicationPage/ApplicationPage';
-import ManageApplications from '../ManageApplications/ManageApplications';
+import ManageApplications from '../ManageApplications/ManageApplications'; 
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -20,12 +20,7 @@ export default function App() {
           <Routes>
             <Route path="/courses" element={<AllCourses />} />
             <Route path="/courses/:courseId/apply" element={<ApplicationPage />} />
-            {user.role === 'teacher' && (
-              <Route path="/courses/new" element={<NewCourse />} />
-            )}
-            {user.role === 'teacher' && (
-              <Route path="/manage-applications" element={<ManageApplications />} />
-            )}
+            <Route path="/manage-applications" element={<ManageApplications />} />
           </Routes>
         </>
       ) : (

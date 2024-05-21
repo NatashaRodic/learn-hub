@@ -23,5 +23,4 @@ router.put('/:id/approve', requireRole('teacher'), applicationsCtrl.approve);
 router.put('/:id/deny', requireRole('teacher'), applicationsCtrl.deny);
 
 
-
 module.exports = router;

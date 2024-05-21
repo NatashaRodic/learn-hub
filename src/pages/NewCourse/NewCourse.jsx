@@ -17,7 +17,7 @@ export default function NewCourse() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const newCourse = await createCourseAPI.createNew(newCourse);
+      // const newCourse = await createCourseAPI.createNew(newCourse);
       console.log('Course created:', newCourse);
     } catch (err) {
       console.err('Error while creating the course', err);

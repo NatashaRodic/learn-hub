@@ -1,5 +1,6 @@
 import { useState } from "react";
 import * as createCourseAPI from '../../utilities/courses-api';
+import { getUser } from '../../utilities/users-service';
 
 export default function NewCourse() {
   const [newCourse, setNewCourse] = useState({
@@ -22,7 +23,6 @@ export default function NewCourse() {
       console.log('Error while creating the course', err);
     }
   }
-
 
   return (
     <>

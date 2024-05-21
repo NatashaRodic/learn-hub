@@ -20,6 +20,3 @@ export async function denyApplication(applicationId) {
     return sendRequest(`${BASE_URL}/${applicationId}/deny`, 'PUT');
 }
 
-export async function getApplication(courseId) {
-    return sendRequest(`${BASE_URL}/${courseId}`);
-}

@@ -14,4 +14,9 @@ export async function approveApplication(applicationId) {
   
 export async function denyApplication(applicationId) {
     return sendRequest(`${BASE_URL}/${applicationId}/deny`, 'PUT');
+    return sendRequest(BASE_URL, 'POST', applicationData);
+}
+
+export async function getApplication(courseId) {
+    return sendRequest(`${BASE_URL}/${courseId}`);
 }

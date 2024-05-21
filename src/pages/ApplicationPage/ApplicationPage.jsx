@@ -8,6 +8,17 @@ export default function ApplicationPage() {
     const [personalStatement, setPersonalStatement] = useState('');
     const [commitPerWeek, setCommitPerWeek] = useState('');
     const [courseInfo, setCourseInfo] = useState(null);
+    const [applicationInfo, setApplicationInfo] = useState(null);
+
+    useEffect(function() {
+        async function getApplication() {
+            const application = await applicationsAPI.getApplication(courseId);
+            if (application) {
+                setApplicationInfo(application);
+            }
+        }
+        getApplication();
+    }, [courseId]);
 
     useEffect(function() {
         async function getCourse() {
@@ -15,6 +26,7 @@ export default function ApplicationPage() {
             setCourseInfo(course);
         }
         getCourse();
+        
     }, [courseId]);
 
     const handleSubmit = async (e) => {
@@ -26,8 +38,9 @@ export default function ApplicationPage() {
                 courseId
             }
             const response = await applicationsAPI.submitApplication(applicationData);
+            setApplicationInfo(response);
             console.log('Application submitted successfully:', response);
-        } catch(err) {
+        } catch (err) {
             console.error('Error submitting application:', err);
         };
     }
@@ -41,23 +54,29 @@ export default function ApplicationPage() {
                     <div className="courseDescription"><p>{courseInfo.content}</p></div>
                 </>
             )}
-            <form onSubmit={handleSubmit}>
-                <label>What's your motivation to apply this course?</label>
-                <textarea
-                    name="message"
-                    rows="5"
-                    cols="30"
-                    value={personalStatement}
-                    onChange={(e) => setPersonalStatement(e.target.value)}
-                />
-                <label>How many hours do you plan to commit per week?</label>
-                <input
-                    type="number"
-                    value={commitPerWeek}
-                    onChange={(e) => setCommitPerWeek(e.target.value)}
-                />
-                <button type="submit">Submit</button>
-            </form>
+            {applicationInfo ? (
+                <p style={{ color: 'red', fontSize: '16px', fontWeight: 'bold' }}>You've already applied, wait for your result from the instructor.</p>
+            ) : (
+                <>
+                <form onSubmit={handleSubmit}>
+                    <label>What's your motivation to apply this course?</label>
+                    <textarea
+                        name="message"
+                        rows="5"
+                        cols="30"
+                        value={personalStatement}
+                        onChange={(e) => setPersonalStatement(e.target.value)}
+                    />
+                    <label>How many hours do you plan to commit per week?</label>
+                    <input
+                        type="number"
+                        value={commitPerWeek}
+                        onChange={(e) => setCommitPerWeek(e.target.value)}
+                    />
+                    <button type="submit">Submit</button>
+                </form>
+                </>
+            )}
         </>
     )
 }

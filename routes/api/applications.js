@@ -1,10 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const applicationsCtrl = require('../../controllers/api/applications');
+const ensureLoggedIn = require('../../config/ensureLoggedIn');
+const requireRole = require('../../middleware/requireRole');
 
 
-//POST /api/applications/
-router.post('/', applicationsCtrl.create);
+// Apply the ensureLoggedIn middleware to all routes
+router.use(ensureLoggedIn);
+
+// GET /api/applications/pending
+router.get('/pending', requireRole('teacher'), applicationsCtrl.getPendingApplications);
+// GET
+router.get('/:courseId', applicationsCtrl.show);
+
+// POST /api/applications/
+router.post('/', requireRole('student'), applicationsCtrl.create);
 
 // GET /api/applications/pending
 router.get('/pending', applicationsCtrl.getPendingApplications);
@@ -13,9 +23,10 @@ router.get('/pending', applicationsCtrl.getPendingApplications);
 router.get('/:courseId', applicationsCtrl.show);
 
 // PUT /api/applications/:id/approve
-router.put('/:id/approve', applicationsCtrl.approve);
+router.put('/:id/approve', requireRole('teacher'), applicationsCtrl.approve);
 
 // PUT /api/applications/:id/deny
-router.put('/:id/deny', applicationsCtrl.deny);
+router.put('/:id/deny', requireRole('teacher'), applicationsCtrl.deny);
+
 
 module.exports = router;

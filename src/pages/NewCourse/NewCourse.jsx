@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import * as createCourseAPI from '../../utilities/courses-api';
+import { getUser } from '../../utilities/users-service';
 
 export default function NewCourse() {
   const navigate = useNavigate();
@@ -24,7 +25,6 @@ export default function NewCourse() {
       console.log('Error while creating the course', err);
     }
   }
-
 
   return (
     <>

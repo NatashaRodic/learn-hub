@@ -7,14 +7,13 @@ export async function submitApplication(applicationData) {
 export async function getPendingApplications() {
     return sendRequest(`${BASE_URL}/pending`);
 }
-  
+
 export async function approveApplication(applicationId) {
     return sendRequest(`${BASE_URL}/${applicationId}/approve`, 'PUT');
 }
-  
+
 export async function denyApplication(applicationId) {
     return sendRequest(`${BASE_URL}/${applicationId}/deny`, 'PUT');
-    return sendRequest(BASE_URL, 'POST', applicationData);
 }
 
 export async function getApplication(courseId) {

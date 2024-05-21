@@ -2,11 +2,10 @@ const express = require('express');
 const router = express.Router();
 const applicationsCtrl = require('../../controllers/api/applications');
 
-//GET
-router.get('/:courseId', applicationsCtrl.show);
 
 //POST /api/applications/
 router.post('/', applicationsCtrl.create);
+
 // PUT /api/applications/:id/approve
 router.put('/:id/approve', applicationsCtrl.approve);
 
@@ -16,5 +15,7 @@ router.put('/:id/deny', applicationsCtrl.deny);
 // GET /api/applications/pending
 router.get('/pending', applicationsCtrl.getPendingApplications);
 
+//GET
+router.get('/:courseId', applicationsCtrl.show);
 
 module.exports = router;

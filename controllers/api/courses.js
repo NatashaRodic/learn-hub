@@ -4,7 +4,8 @@ const User = require('../../models/user');
 module.exports = {
     index,
     show,
-    create
+    create,
+    showDetails
 };
 
 async function index(req, res) {
@@ -19,7 +20,7 @@ async function show(req, res) {
 }
 
 async function create(req, res) {
-    const {name, content, duration, skillLevel } = req.body;
+    const { name, content, duration, skillLevel } = req.body;
 
     const course = new Course({
         name: name,
@@ -30,4 +31,10 @@ async function create(req, res) {
 
     const savedCourse = await course.save();
     res.json(savedCourse);
+}
+
+
+async function showDetails(req, res) {
+    const course = await Course.findById(req.params.id);
+    res.json(course);
 }

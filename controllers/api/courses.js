@@ -1,8 +1,10 @@
 const Course = require('../../models/course');
+const User = require('../../models/user');
 
 module.exports = {
     index,
-    show
+    show,
+    create
 };
 
 async function index(req, res) {

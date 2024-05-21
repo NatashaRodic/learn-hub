@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import * as createCourseAPI from '../../utilities/courses-api';
 
 export default function NewCourse() {
+  const navigate = useNavigate();
   const [newCourse, setNewCourse] = useState({
     name: 'Node.js',
     content: 'Test',
@@ -17,7 +19,7 @@ export default function NewCourse() {
     e.preventDefault();
     try {
       const newCourseRes = await createCourseAPI.createNew(newCourse);
-      console.log('Course created:', newCourseRes);
+      navigate('/courses');
     } catch (err) {
       console.log('Error while creating the course', err);
     }

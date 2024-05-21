@@ -9,11 +9,18 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <nav>
-      <Link to="/courses">All Courses</Link>
-      &nbsp; | &nbsp;
-      <Link to="/courses/new">New Course</Link>
-      &nbsp; | &nbsp;
-      <Link to="/manage-applications">Manage Applications</Link>
+      {user.role === 'teacher' && (
+        <>
+          <Link to="/courses/new">New Course</Link>
+          &nbsp; | &nbsp;
+          <Link to="/manage-applications">Manage Applications</Link>
+        </>
+      )}
+      {user.role === 'student' && (
+        <>
+          <Link to="/courses">All Courses</Link>
+        </>
+      )}
       &nbsp;&nbsp;
       <span>Welcome, {user.name}</span>
       &nbsp;&nbsp;<Link to="" onClick={handleLogOut}>Log Out</Link>

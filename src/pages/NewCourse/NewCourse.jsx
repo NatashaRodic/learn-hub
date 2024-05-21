@@ -1,5 +1,5 @@
 import { useState } from "react";
-import * as createCourseAPI from '../../utilities/createCourse';
+import * as createCourseAPI from '../../utilities/courses-api';
 
 export default function NewCourse() {
   const [newCourse, setNewCourse] = useState({
@@ -16,8 +16,8 @@ export default function NewCourse() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const newCourse = await createCourseAPI.createNew(newCourse);
-      console.log('Course created:', newCourse);
+      const newCourseRes = await createCourseAPI.createNew(newCourse);
+      console.log('Course created:', newCourseRes);
     } catch (err) {
       console.log('Error while creating the course', err);
     }

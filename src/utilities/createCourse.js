@@ -1,9 +1,10 @@
 import sendRequest from "./send-request";
 const BASE_URL = '/api/courses';
 
-export async function createNew(newCourse) {
-    return sendRequest(BASE_URL, 'POST', newCourse);
-}
+// export async function createNew(newCourse) {
+//     console.log(newCourse);
+//     return sendRequest(BASE_URL, 'POST', newCourse);
+// }
 
 // export default async function createCourse(url, method = 'POST', payload) {
 //     // Fetch accepts an options object as the 2nd argument

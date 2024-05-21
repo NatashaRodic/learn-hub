@@ -19,7 +19,15 @@ async function show(req, res) {
 }
 
 async function create(req, res) {
-    console.log("start courses create controller")
-    const course = await Course.createNew(req.params);
-    res.json(course);
+    const {name, content, duration, skillLevel } = req.body;
+
+    const course = new Course({
+        name: name,
+        content: content,
+        duration: duration,
+        skillLevel: skillLevel
+    });
+
+    const savedCourse = await course.save();
+    res.json(savedCourse);
 }

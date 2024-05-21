@@ -23,7 +23,9 @@ function CourseCard({ courseInfo, onDelete }) {
             <div className="courseDescription"><p>{courseInfo.content}</p></div>
             <p className='details'>Duration: {courseInfo.duration} weeks</p>
             <p className='details'>Skill level required: {levelBars}</p>
-            <span><a href={`courses/${courseInfo._id}/apply`}>Apply</a></span>
+            <p><a href={`courses/${courseInfo._id}/apply`}>Apply</a></p>
+            &nbsp; | &nbsp;
+            <p><a href={`courses/${courseInfo._id}/details`}>Details</a></p>
             &nbsp; | &nbsp;
             <button onClick={handleDelete}>Delete Course</button>
         </div>

@@ -29,7 +29,7 @@ async function show(req, res) {
 }
 
 async function create(req, res) {
-    const {name, content, duration, skillLevel } = req.body;
+    const { name, content, duration, skillLevel } = req.body;
 
     const course = new Course({
         name: name,

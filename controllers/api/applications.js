@@ -5,6 +5,9 @@ const Course = require('../../models/course');
 
 module.exports = {
     create,
+    approve,
+    deny,
+    getPendingApplications,
     show
 };
 
@@ -15,7 +18,6 @@ async function show(req, res) {
     if (!application) {
         return res.json(null);
     }
-    
     res.json(application);
 };
 
@@ -37,6 +39,42 @@ async function create(req, res) {
         });
         const savedApplication = await newApplication.save();
         res.status(201).json(savedApplication);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+}
+async function approve(req, res) {
+    try {
+        const application = await Application.findById(req.params.id);
+        if (!application) {
+            return res.status(404).json({ message: 'Application not found' });
+        }
+        application.status = 'approved';
+        await application.save();
+        res.status(200).json(application);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+}
+
+async function deny(req, res) {
+    try {
+        const application = await Application.findById(req.params.id);
+        if (!application) {
+            return res.status(404).json({ message: 'Application not found' });
+        }
+        application.status = 'denied';
+        await application.save();
+        res.status(200).json(application);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+}
+
+async function getPendingApplications(req, res) {
+    try {
+        const applications = await Application.find({ status: 'pending' }).populate('user').populate('course');
+        res.status(200).json(applications);
     } catch (err) {
         res.status(400).json(err);
     }

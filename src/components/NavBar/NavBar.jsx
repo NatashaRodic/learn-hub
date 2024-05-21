@@ -12,6 +12,8 @@ export default function NavBar({ user, setUser }) {
       <Link to="/courses">All Courses</Link>
       &nbsp; | &nbsp;
       <Link to="/courses/new">New Course</Link>
+      &nbsp; | &nbsp;
+      <Link to="/manage-applications">Manage Applications</Link>
       &nbsp;&nbsp;
       <span>Welcome, {user.name}</span>
       &nbsp;&nbsp;<Link to="" onClick={handleLogOut}>Log Out</Link>

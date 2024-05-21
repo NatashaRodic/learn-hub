@@ -3,24 +3,23 @@ import * as createCourseAPI from '../../utilities/createCourse';
 
 export default function NewCourse() {
   const [newCourse, setNewCourse] = useState({
-    name: '',
-    content: '',
-    duration: '',
-    skillLevel: ''
+    name: 'Node.js',
+    content: 'Test',
+    duration: '5',
+    skillLevel: '1'
   });
 
   function handleChange(e) {
-    console.log("changing...");
     setNewCourse({ ...newCourse, [e.target.name]: e.target.value });
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      // const newCourse = await createCourseAPI.createNew(newCourse);
+      const newCourse = await createCourseAPI.createNew(newCourse);
       console.log('Course created:', newCourse);
     } catch (err) {
-      console.err('Error while creating the course', err);
+      console.log('Error while creating the course', err);
     }
   }
 

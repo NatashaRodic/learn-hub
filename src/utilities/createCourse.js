@@ -2,7 +2,7 @@ import sendRequest from "./send-request";
 const BASE_URL = '/api/courses';
 
 export async function createNew(newCourse) {
-    return sendRequest(`${BASE_URL}/new`, 'POST', newCourse);
+    return sendRequest(BASE_URL, 'POST', newCourse);
 }
 
 // export default async function createCourse(url, method = 'POST', payload) {

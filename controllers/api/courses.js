@@ -17,7 +17,9 @@ async function show(req, res) {
     const course = await Course.findById(req.params.id);
     res.json(course);
 }
+
 async function create(req, res) {
-    const course = await Course.create(req.params);
+    console.log("start courses create controller")
+    const course = await Course.createNew(req.params);
     res.json(course);
 }

@@ -4,7 +4,19 @@ const User = require('../../models/user');
 const Course = require('../../models/course');
 
 module.exports = {
-    create
+    create,
+    show
+};
+
+async function show(req, res) {
+    const course = await Course.findById(req.params.courseId);
+    const application = await Application.findOne({ user: req.user.id, course: course._id });
+
+    if (!application) {
+        return res.json(null);
+    }
+    
+    res.json(application);
 };
 
 async function create(req, res) {

@@ -5,7 +5,8 @@ import { getUser } from '../../utilities/users-service';
 export default function NewCourse() {
   const [newCourse, setNewCourse] = useState({
     name: 'Node.js',
-    content: 'Test',
+    description: 'Test',
+    content: "Course content",
     duration: '5',
     skillLevel: '1'
   });
@@ -29,9 +30,11 @@ export default function NewCourse() {
       <h1>New Course</h1>
 
       <form className="containerBox" onSubmit={handleSubmit}>
-        <label>Course Name</label>
+        <label>Course Title</label>
         <input type="text" name="name" value={newCourse.name} onChange={handleChange} required />
-        <label>About the Course</label>
+        <label> Short Description</label>
+        <textarea type="description" name="description" rows="5" cols="30" value={newCourse.description} onChange={handleChange}>Course Details</textarea>
+        <label>Course Content</label>
         <textarea type="content" name="content" rows="5" cols="30" value={newCourse.content} onChange={handleChange}>Course Details</textarea>
         <label>Course duration (in weeks) </label>
         <input type="duration" name="duration" value={newCourse.duration} onChange={handleChange} />

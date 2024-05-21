@@ -1,11 +1,12 @@
 /* CSS Custom Properties */
 :root {
-  --white: #FFFFFF;
+  --white: #faf5fd;
   --tan-1: #FBF9F6;
   --tan-2: #E7E2DD;
   --tan-3: #E2D9D1;
   --tan-4: #D3C1AE;
-  --orange: #F67F00;
+  --teal: #008686;
+  --lightteal: #05a6a6;
   --text-light: #968c84;
   --text-dark: #615954;
 }
@@ -16,17 +17,66 @@
   box-sizing: border-box;
 }
 
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(255, 255, 255);
-  padding: 2vmin;
-  height: 100vh;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  min-height: 100vh;
+  background-color: #FFDEE9;
+  background-image: linear-gradient(0deg, rgb(160, 208, 203) 0%, #ddf1f3 100%);
 }
+
+.coursePanel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.courseCard {
+  background-color: rgb(238, 254, 255);
+  flex-basis: 48%;
+  border: 1px solid rgb(0, 158, 116);
+  box-shadow: 0 0 10px rgba(21, 0, 89, 0.25);
+  border-radius: 3px;
+  transform: scale(1);
+  margin: 1%;
+  padding: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .courseCard {
+    flex-basis: 100%;
+  }
+}
+
+.courseCard:hover {
+  background-color: var(--white);
+
+  box-shadow: 0 0 10px rgba(21, 14, 43, 0.5);
+  transform: scale(1.05);
+  transition: all 0.2s;
+}
+
+.courseCard h2 {
+  color: rgb(2, 128, 0);
+  font-weight: 500;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.courseCard .courseDescription {
+  color: rgb(53, 53, 53);
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.courseCard .details {
+  color: rgb(58, 59, 58);
+  font-size: 12px;
+  font-weight: 600;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -88,7 +138,7 @@ code {
 }
 
 p.error-message {
-  color: var(--orange);
+  color: var(--teal);
   text-align: center;
 }
 
@@ -117,15 +167,16 @@ input {
 }
 
 input:focus {
-  border-color: var(--orange);
+  border-color: var(--teal);
 }
 
 button,
 a.button {
+
   margin: 1vmin;
   padding: 1vmin;
   color: var(--white);
-  background-color: var(--orange);
+  background-color: var(--teal);
   font-size: 2vmin;
   font-weight: bold;
   text-decoration: none;
@@ -134,6 +185,11 @@ a.button {
   border-radius: .5vmin;
   outline: none;
   cursor: pointer;
+}
+
+button:hover,
+a.button:hover {
+  background-color: var(--lightteal)
 }
 
 button.btn-sm {
@@ -166,4 +222,32 @@ button[type="submit"] {
   box-shadow: 0 0 10px rgba(76, 99, 83, 0.1);
   border-radius: 10px;
   background-color: #ffffff;
+}
+
+.panelContainer {
+  background-color: white;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 30px;
+  border: 1px solid rgb(4, 87, 72);
+  border-radius: 30px;
+  border: 1px solid rgb(0, 158, 116);
+  box-shadow: 0 0 10px rgba(21, 0, 89, 0.25);
+}
+
+.panelContainer h1 {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.panelContainer h2 {
+  font-size: 35px;
+  font-weight: 800;
+}
+
+.panelContainer .description {
+  font-size: 14px;
+  color: rgb(84, 84, 87);
+  font-weight: 300;
 }

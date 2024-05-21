@@ -8,6 +8,7 @@ import AllCourses from '../AllCourses/AllCourses';
 import ApplicationPage from '../ApplicationPage/ApplicationPage';
 import ManageApplications from '../ManageApplications/ManageApplications';
 import NavBar from '../../components/NavBar/NavBar';
+import CourseCardDetails from '../AllCourses/CourseCardDetails';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -28,6 +29,8 @@ export default function App() {
               <>
                 <Route path="/courses" element={<AllCourses />} />
                 <Route path="/courses/:courseId/apply" element={<ApplicationPage />} />
+                <Route path="/courses/:courseId/details" element={<CourseCardDetails />}/>
+                
               </>
             )}
           </Routes>

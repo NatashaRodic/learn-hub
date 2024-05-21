@@ -74,7 +74,6 @@ async function deny(req, res) {
 async function getPendingApplications(req, res) {
     try {
         const applications = await Application.find({ status: 'pending' }).populate('user').populate('course');
-        console.log(`in controller ${applications}`);
         res.status(200).json(applications);
     } catch (err) {
         res.status(400).json(err);

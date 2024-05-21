@@ -1,29 +1,43 @@
+import { useState } from "react";
+import * as createCourseAPI from '../../utilities/courses-api';
+
 export default function NewCourse() {
+  const [newCourse, setNewCourse] = useState({
+    name: 'Node.js',
+    content: 'Test',
+    duration: '5',
+    skillLevel: '1'
+  });
+
+  function handleChange(e) {
+    setNewCourse({ ...newCourse, [e.target.name]: e.target.value });
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      const newCourseRes = await createCourseAPI.createNew(newCourse);
+      console.log('Course created:', newCourseRes);
+    } catch (err) {
+      console.log('Error while creating the course', err);
+    }
+  }
+
+
   return (
     <>
-      <h1>Create a new Course</h1>
+      <h1>New Course</h1>
 
-      <form action="">
+      <form className="containerBox" onSubmit={handleSubmit}>
         <label>Course Name</label>
-        <input type="text" />
+        <input type="text" name="name" value={newCourse.name} onChange={handleChange} required />
         <label>About the Course</label>
-        <textarea name="message" rows="5" cols="30">Course Details</textarea>
+        <textarea type="content" name="content" rows="5" cols="30" value={newCourse.content} onChange={handleChange}>Course Details</textarea>
         <label>Course duration (in weeks) </label>
-        <input type="number" />
+        <input type="duration" name="duration" value={newCourse.duration} onChange={handleChange} />
         <label>Skills level</label>
-        <select name="skills" id="skills-select">
-          <option value="">--Please choose an option--</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select>
+        <input type="skillLevel" name="skillLevel" value={newCourse.skillLevel} onChange={handleChange} />
+        <button>Create the course</button>
       </form>
     </>
 

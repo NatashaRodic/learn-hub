@@ -8,3 +8,7 @@ export async function getAll() {
 export async function getById(courseId) {
     return sendRequest(`${BASE_URL}/${courseId}`);
 }
+
+export async function createNew(newCourse) {
+    return sendRequest(BASE_URL, 'POST', newCourse);
+}

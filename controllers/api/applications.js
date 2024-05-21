@@ -7,7 +7,19 @@ module.exports = {
     create,
     approve,
     deny,
-    getPendingApplications
+    getPendingApplications,
+    show
+};
+
+async function show(req, res) {
+    const course = await Course.findById(req.params.courseId);
+    const application = await Application.findOne({ user: req.user.id, course: course._id });
+
+    if (!application) {
+        return res.json(null);
+    }
+    
+    res.json(application);
 };
 
 async function create(req, res) {

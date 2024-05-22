@@ -39,7 +39,7 @@ body {
   flex-basis: 48%;
   border: 1px solid rgb(0, 158, 116);
   box-shadow: 0 0 10px rgba(21, 0, 89, 0.25);
-  border-radius: 3px;
+  border-radius: 10px;
   transform: scale(1);
   margin: 1%;
   padding: 10px;
@@ -229,19 +229,23 @@ button[type="submit"] {
   max-width: 800px;
   margin: 0 auto;
   margin-top: 30px;
-  padding: 30px;
   border: 1px solid rgb(4, 87, 72);
   border-radius: 30px;
   border: 1px solid rgb(0, 158, 116);
   box-shadow: 0 0 10px rgba(21, 0, 89, 0.25);
+  overflow: hidden;
 }
 
 .panelContainer h1 {
+  color: white;
+  padding-top: 0;
+  margin-top: 0;
   font-size: 20px;
   font-weight: 800;
 }
 
 .panelContainer h2 {
+  color: white;
   font-size: 35px;
   font-weight: 800;
 }
@@ -250,4 +254,15 @@ button[type="submit"] {
   font-size: 14px;
   color: rgb(84, 84, 87);
   font-weight: 300;
+}
+
+.panelContainer .headerDetails {
+  padding: 30px;
+  padding-top: 50px;
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  overflow: hidden;
+}
+
+.panelContainer .details {
+  padding: 30px;
 }

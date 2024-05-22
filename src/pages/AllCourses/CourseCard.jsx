@@ -3,13 +3,13 @@ import * as coursesAPI from '../../utilities/courses-api';
 
 function CourseCard({ courseInfo, onDelete }) {
     // const pipes = Array.from({ length: parm }, (_, index) => '|'.repeat(parm - index)).join(' ');
-    
+
     let levelBars = ""
     for (let index = 0; index < courseInfo.skillLevel; index++) {
         levelBars = levelBars + " 🟩";
     }
 
-    const handleDelete = async(e) => {
+    const handleDelete = async (e) => {
         e.preventDefault();
         await coursesAPI.deleteCourse(courseInfo._id);
         await onDelete();
@@ -21,11 +21,11 @@ function CourseCard({ courseInfo, onDelete }) {
             <div className="courseDescription"><p>{courseInfo.content}</p></div>
             <p className='details'>Duration: {courseInfo.duration} weeks</p>
             <p className='details'>Skill level required: {levelBars}</p>
-            <span><a href={`courses/${courseInfo._id}/apply`}>Apply</a></span>
-            &nbsp; | &nbsp;
-            <span><a href={`courses/${courseInfo._id}/details`}>Details</a></span>
-            &nbsp; | &nbsp;
-            <button onClick={handleDelete}>Delete Course</button>
+
+
+            <span><a className='button' href={`courses/${courseInfo._id}/details`}>Details</a></span>
+
+            <button style={{ backgroundColor: "#4c0030" }} onClick={handleDelete}>Delete Course</button>
         </div>
     )
 }

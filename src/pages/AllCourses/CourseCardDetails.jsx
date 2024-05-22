@@ -19,16 +19,27 @@ export default function CourseCardDetails() {
     return (
         <>
             <div className="panelContainer">
-                <h1>Course Details</h1>
-                <h2>{courseDetails.name}</h2>
-                <p><strong>Description</strong></p>
-                <p className="description">{courseDetails.description}</p>
-                <p><strong>Content</strong></p>
-                <p>{courseDetails.content}</p>
-                <p><strong>Duration</strong></p>
-                <p>{courseDetails.duration} weeks</p>
-                <p><strong>Skill level</strong></p>
-                <p> Skill level for this course is {courseDetails.skillLevel}, on the scale 1-10 </p>
+                <div className="headerDetails">
+                    <h1>Course Details</h1>
+                    <h2>{courseDetails.name}</h2>
+                </div>
+
+                <div className="details">
+                    <p><strong>Description</strong></p>
+                    <p className="description">{courseDetails.description}</p>
+                    <p><strong>Content</strong></p>
+                    <p>{courseDetails.content}</p>
+                    <p><strong>Duration</strong></p>
+                    <p>{courseDetails.duration} weeks</p>
+                    <p><strong>Skill level</strong></p>
+                    <p> Skill level for this course is {courseDetails.skillLevel}, on the scale 1-10 </p>
+                    <hr />
+                    <br />
+                    <span><a className='button' href={`/courses/${courseDetails._id}/apply`}>Apply</a></span>
+
+                    <span><a className='button' href={`/courses`}>All courses</a></span>
+
+                </div>
             </div>
         </>
 

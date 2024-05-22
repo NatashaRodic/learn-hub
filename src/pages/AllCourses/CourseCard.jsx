@@ -15,6 +15,16 @@ function CourseCard({ courseInfo, onDelete, user }) {
         await onDelete();
     }
 
+    const handleDetailsClick = (courseId) => {
+        // Your logic for handling the details click
+        window.location.href = `courses/${courseId}/details`;
+    };
+
+    const handleApplyClick = (courseId) => {
+        // Your logic for handling the apply click
+        window.location.href = `courses/${courseId}/apply`;
+    };
+
     return (
         <div className='courseCard'>
             <h2>{courseInfo.name}</h2>
@@ -25,11 +35,15 @@ function CourseCard({ courseInfo, onDelete, user }) {
             {/* Conditionally render buttons based on user role */}
             {user.role === 'teacher' ? (
                 <>
-                    <span><a className='button' href={`courses/${courseInfo._id}/details`}>Details</a></span>
-                    <button style={{ backgroundColor: "#4c0030" }} onClick={handleDelete}>Delete Course</button>
+                    <button className="button" onClick={() => handleDetailsClick(courseInfo._id)}>Details</button>
+                    {courseInfo.createdBy === user.id && (
+                        <button style={{ backgroundColor: "#4c0030" }} onClick={handleDelete}>
+                            Delete Course
+                        </button>
+                    )}
                 </>
             ) : (
-                <span><a className='button' href={`courses/${courseInfo._id}/apply`}>Apply</a></span>
+                <button className="button" onClick={() => handleApplyClick(courseInfo._id)}>Apply</button>
             )}
         </div>
     );

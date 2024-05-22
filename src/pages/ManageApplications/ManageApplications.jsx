@@ -32,7 +32,6 @@ export default function ManageApplications() {
                 <ul>
                     {applications.map(app => (
                         <li key={app._id}>
-                            {console.log(JSON.stringify(app))}
                             <p><strong>Course:</strong> {app.course.name}</p>
                             <p><strong>Applicant:</strong> {app.user.name}</p>
                             <p><strong>Personal Statement:</strong> {app.personalStatement}</p>

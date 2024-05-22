@@ -9,7 +9,7 @@ function CourseCard({ courseInfo, onDelete, user }) {
     for (let index = 0; index < courseInfo.skillLevel; index++) {
         levelBars += " 🟩";
     }
-
+    
     useEffect(function() {
         async function getApplication() {
             const application = await applicationsAPI.getApplication(courseInfo._id);
@@ -18,7 +18,6 @@ function CourseCard({ courseInfo, onDelete, user }) {
         getApplication();
     }, []);
 
-    console.log(`asdfasdf ${JSON.stringify(applicationInfo)}`);
     // Handling the deletion of a course
     const handleDelete = async (e) => {
         e.preventDefault();
@@ -47,10 +46,12 @@ function CourseCard({ courseInfo, onDelete, user }) {
                     <span>
                         <button onClick={() => handleDetailsClick(courseInfo._id)}>Details</button>
                     </span>
-                    {courseInfo.createBy === user._id && (
-                        <button style={{ backgroundColor: "#4c0030" }} onClick={handleDelete}>
-                            Delete Course
-                        </button>
+                    {courseInfo.createdBy === user.id && (
+                        <span>
+                            <button style={{ backgroundColor: "#4c0030" }} onClick={handleDelete}>
+                                Delete Course
+                            </button>
+                        </span>
                     )}
                 </>
             ) : (

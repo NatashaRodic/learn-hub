@@ -8,6 +8,7 @@ export default function NavBar({ user, setUser }) {
   }
 
   return (
+
     <>
       <nav>
 
@@ -20,6 +21,7 @@ export default function NavBar({ user, setUser }) {
 
           {user.role === 'teacher' && (
             <>
+              <Link to="/courses">All Courses</Link>
               <Link to="/courses/new">New Course</Link>
               <Link to="/manage-applications">Manage Applications</Link>
             </>
@@ -35,5 +37,6 @@ export default function NavBar({ user, setUser }) {
 
       <div className='welcome'>Welcome, <strong> {user.name}</strong></div>
     </>
+
   );
 }

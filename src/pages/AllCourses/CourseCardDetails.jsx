@@ -35,7 +35,7 @@ export default function CourseCardDetails() {
                     <p> Skill level for this course is {courseDetails.skillLevel}, on the scale 1-10 </p>
                     <hr />
                     <br />
-                    <span><a className='button' href={`/courses/${courseDetails._id}/apply`}>Apply</a></span>
+                    {/* <span><a className='button' href={`/courses/${courseDetails._id}/apply`}>Apply</a></span> */}
 
                     <span><a className='button' href={`/courses`}>All courses</a></span>
 

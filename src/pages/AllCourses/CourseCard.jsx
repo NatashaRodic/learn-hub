@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as coursesAPI from '../../utilities/courses-api';
+import * as applicationsAPI from '../../utilities/applications-api';
 
 function CourseCard({ courseInfo, onDelete, user }) {
+    const [applicationInfo, setApplicationInfo] = useState(null);
     // Constructing the skill level bars based on the skill level of the course
     let levelBars = "";
     for (let index = 0; index < courseInfo.skillLevel; index++) {
         levelBars += " 🟩";
     }
 
+    useEffect(function() {
+        async function getApplication() {
+            const application = await applicationsAPI.getApplication(courseInfo._id);
+            setApplicationInfo(application);
+        }
+        getApplication();
+    }, []);
+
+    console.log(`asdfasdf ${JSON.stringify(applicationInfo)}`);
     // Handling the deletion of a course
     const handleDelete = async (e) => {
         e.preventDefault();
@@ -16,12 +27,10 @@ function CourseCard({ courseInfo, onDelete, user }) {
     }
 
     const handleDetailsClick = (courseId) => {
-        // Your logic for handling the details click
         window.location.href = `courses/${courseId}/details`;
     };
 
     const handleApplyClick = (courseId) => {
-        // Your logic for handling the apply click
         window.location.href = `courses/${courseId}/apply`;
     };
 
@@ -33,17 +42,29 @@ function CourseCard({ courseInfo, onDelete, user }) {
             <p className='details'>Skill level required: {levelBars}</p>
 
             {/* Conditionally render buttons based on user role */}
-            {user.role === 'teacher' ? (
+            {user.role === "teacher" ? (
                 <>
-                    <button className="button" onClick={() => handleDetailsClick(courseInfo._id)}>Details</button>
-                    {courseInfo.createdBy === user.id && (
+                    <span>
+                        <button onClick={() => handleDetailsClick(courseInfo._id)}>Details</button>
+                    </span>
+                    {courseInfo.createBy === user._id && (
                         <button style={{ backgroundColor: "#4c0030" }} onClick={handleDelete}>
                             Delete Course
                         </button>
                     )}
                 </>
             ) : (
-                <button className="button" onClick={() => handleApplyClick(courseInfo._id)}>Apply</button>
+                <span>
+                    {applicationInfo ? (
+                        applicationInfo.status === 'approved' ? (
+                            <button onClick={() => handleDetailsClick(courseInfo._id)}>Details</button>
+                        ) : (
+                            <p>Your application is {applicationInfo.status}</p>
+                        )
+                    ) : (
+                        <button  onClick={() => handleApplyClick(courseInfo._id)}>Apply</button>
+                    )}
+                </span>
             )}
         </div>
     );

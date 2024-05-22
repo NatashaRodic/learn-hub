@@ -8,22 +8,32 @@ export default function NavBar({ user, setUser }) {
   }
 
   return (
-    <nav>
-      {user.role === 'teacher' && (
-        <>
-          <Link to="/courses/new">New Course</Link>
-          &nbsp; | &nbsp;
-          <Link to="/manage-applications">Manage Applications</Link>
-        </>
-      )}
-      {user.role === 'student' && (
-        <>
-          <Link to="/courses">All Courses</Link>
-        </>
-      )}
-      &nbsp;&nbsp;
-      <span>Welcome, {user.name}</span>
-      &nbsp;&nbsp;<Link to="" onClick={handleLogOut}>Log Out</Link>
-    </nav>
+    <>
+      <nav>
+
+        <div className="left">
+          {user.role === 'student' && (
+            <>
+              <Link to="/courses">All Courses</Link>
+            </>
+          )}
+
+          {user.role === 'teacher' && (
+            <>
+              <Link to="/courses/new">New Course</Link>
+              <Link to="/manage-applications">Manage Applications</Link>
+            </>
+          )}
+
+
+        </div>
+        <div className="right">
+
+          <Link to="" onClick={handleLogOut}>Log Out</Link>
+        </div>
+      </nav>
+
+      <div className='welcome'>Welcome, <strong> {user.name}</strong></div>
+    </>
   );
 }

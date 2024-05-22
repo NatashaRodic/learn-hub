@@ -11,6 +11,8 @@ export default function NavBar({ user, setUser }) {
     <nav>
       {user.role === 'teacher' && (
         <>
+          <Link to="/courses">All Courses</Link>
+          &nbsp; | &nbsp;
           <Link to="/courses/new">New Course</Link>
           &nbsp; | &nbsp;
           <Link to="/manage-applications">Manage Applications</Link>

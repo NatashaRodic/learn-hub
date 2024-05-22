@@ -19,19 +19,18 @@ export default function App() {
         <>
           <NavBar user={user} setUser={setUser} />
           <Routes>
+            <Route path="/courses" element={<AllCourses user={user} />} />
+            <Route path="/courses/:courseId/details" element={<CourseCardDetails />} />
             <Route path="/*" element={<Navigate to="/courses" />} />
             {user.role === 'teacher' && (
               <>
-                <Route path="/courses" element={<AllCourses user={user} />} />
                 <Route path="/courses/new" element={<NewCourse />} />
                 <Route path="/manage-applications" element={<ManageApplications />} />
               </>
             )}
             {user.role === 'student' && (
               <>
-                <Route path="/courses" element={<AllCourses user={user} />} />
                 <Route path="/courses/:courseId/apply" element={<ApplicationPage />} />
-                <Route path="/courses/:courseId/details" element={<CourseCardDetails />} />
               </>
             )}
           </Routes>

@@ -290,6 +290,7 @@ nav a {
   background-color: #0f0e17;
   border-radius: 5px;
   transition: background-color 0.3s, transform 0.3s;
+  margin-left: 5px;
 }
 
 nav a:hover {

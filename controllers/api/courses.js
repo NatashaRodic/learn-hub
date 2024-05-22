@@ -41,4 +41,3 @@ async function create(req, res) {
     const savedCourse = await course.save();
     res.json(savedCourse);
 }
-

@@ -20,6 +20,7 @@ export default function App() {
           <Routes>
             {user.role === 'teacher' && (
               <>
+                <Route path="/courses" element={<AllCourses />} />
                 <Route path="/courses/new" element={<NewCourse />} />
                 <Route path="/manage-applications" element={<ManageApplications />} />
               </>

@@ -1,34 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import * as coursesAPI from '../../utilities/courses-api';
-import * as applicationsAPI from '../../utilities/applications-api';
 import CourseCard from '../AllCourses/CourseCard';
-import CourseCardDetails from '../AllCourses/CourseCardDetails';
 
-
-export default function MyCourses() {
+export default function MyCourses({ user }) {
     const [myCourses, setMyCourses] = useState([]);
 
     useEffect(function () {
         async function getCourses() {
             const coursesApproved = await coursesAPI.getAll();
-            setMyCourses(coursesApproved);
+            const userCourses = coursesApproved.filter(course => course.createdBy === user.id);
+            setMyCourses(userCourses);
         }
         getCourses();
-    }, [])
+    }, [user.id]);
 
-    console.log('courses', myCourses)
+
+    console.log('courses', myCourses);
 
     return (
         <>
             <h1>My Courses</h1>
+
             <div className="coursePanel">
-                {myCourses.map((course) => (
-                    <li>{course.name}
-                    </li>
+                {myCourses.map((el) => (
+                    <CourseCard key={el._id} courseInfo={el} user={user} />
                 ))}
             </div>
         </>
     );
-
 }
 

@@ -21,7 +21,7 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             <Route path="/courses/:courseId/details" element={<CourseCardDetails />} />
-            <Route path="/courses/my-courses" element={<MyCourses />} />
+            <Route path="/courses/my-courses" element={<MyCourses user={user} />} />
             {user.role === 'teacher' && (
               <>
                 <Route path="/courses" element={<AllCourses user={user} />} />

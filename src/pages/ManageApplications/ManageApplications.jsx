@@ -21,7 +21,6 @@ export default function ManageApplications() {
         await applicationsAPI.denyApplication(applicationId);
         setApplications(applications.filter(app => app._id !== applicationId));
     };
-    console.log('applications', applications);
 
     return (
         <div>

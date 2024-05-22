@@ -9,6 +9,7 @@ import ApplicationPage from '../ApplicationPage/ApplicationPage';
 import ManageApplications from '../ManageApplications/ManageApplications';
 import NavBar from '../../components/NavBar/NavBar';
 import CourseCardDetails from '../AllCourses/CourseCardDetails';
+import MyCourses from '../MyCourses/MyCourses';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -20,6 +21,7 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             <Route path="/courses/:courseId/details" element={<CourseCardDetails />} />
+            <Route path="/courses/my-courses" element={<MyCourses />} />
             {user.role === 'teacher' && (
               <>
                 <Route path="/courses" element={<AllCourses user={user} />} />

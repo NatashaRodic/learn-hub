@@ -37,7 +37,7 @@ export default function NavBar({ user, setUser }) {
         </div>
       </nav>
 
-      <div className='welcome'>Welcome, <strong> {user.name}</strong></div>
+      <div className='welcome'>Welcome,<strong> {user.role}</strong> <strong> {user.name}</strong></div>
     </>
 
   );

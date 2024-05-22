@@ -9,6 +9,7 @@ router.use(ensureLoggedIn);
 
 // GET /api/applications/pending
 router.get('/pending', requireRole('teacher'), applicationsCtrl.getPendingApplications);
+
 // GET
 router.get('/:courseId', applicationsCtrl.show);
 

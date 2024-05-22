@@ -75,7 +75,7 @@ async function getPendingApplications(req, res) {
     try {
         if (req.user.role === 'teacher') {
             // Fetch courses owned by the teacher
-            const courses = await Course.find({ createdBy: req.user._id });
+            const courses = await Course.find({ createdBy: req.user.id });
             // Extract course IDs
             const courseIds = courses.map(course => course._id);
             // Fetch applications for the teacher's courses

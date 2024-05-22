@@ -9,6 +9,7 @@ import ApplicationPage from '../ApplicationPage/ApplicationPage';
 import ManageApplications from '../ManageApplications/ManageApplications';
 import NavBar from '../../components/NavBar/NavBar';
 import CourseCardDetails from '../AllCourses/CourseCardDetails';
+import MyCourses from '../MyCourses/MyCourses';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -24,6 +25,7 @@ export default function App() {
             <Route path="/*" element={<Navigate to="/courses" />} />
             {user.role === 'teacher' && (
               <>
+                <Route path="/courses/my-courses" element={<MyCourses user={user} />} />
                 <Route path="/courses/new" element={<NewCourse />} />
                 <Route path="/manage-applications" element={<ManageApplications />} />
               </>
@@ -39,7 +41,6 @@ export default function App() {
         <AuthPage setUser={setUser} />
       )}
     </main>
-
 
   );
 }

@@ -9,8 +9,8 @@ function CourseCard({ courseInfo, onDelete, user }) {
     for (let index = 0; index < courseInfo.skillLevel; index++) {
         levelBars += " 🟩";
     }
-    
-    useEffect(function() {
+
+    useEffect(function () {
         async function getApplication() {
             const application = await applicationsAPI.getApplication(courseInfo._id);
             setApplicationInfo(application);
@@ -26,11 +26,11 @@ function CourseCard({ courseInfo, onDelete, user }) {
     }
 
     const handleDetailsClick = (courseId) => {
-        window.location.href = `courses/${courseId}/details`;
+        window.location.href = `/courses/${courseId}/details`;
     };
 
     const handleApplyClick = (courseId) => {
-        window.location.href = `courses/${courseId}/apply`;
+        window.location.href = `/courses/${courseId}/apply`;
     };
 
     return (
@@ -63,7 +63,7 @@ function CourseCard({ courseInfo, onDelete, user }) {
                             <p>Your application is {applicationInfo.status}</p>
                         )
                     ) : (
-                        <button  onClick={() => handleApplyClick(courseInfo._id)}>Apply</button>
+                        <button onClick={() => handleApplyClick(courseInfo._id)}>Apply</button>
                     )}
                 </span>
             )}

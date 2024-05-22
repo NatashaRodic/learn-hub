@@ -13,11 +13,11 @@ const courseSchema = new Schema({
         max: 10,
         default: 10
     },
-    // createdBy: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'User',
-    //     required: true
-    // }
+    createdBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    }
 })
 
 module.exports = mongoose.model('Course', courseSchema);

@@ -70,6 +70,7 @@ export default function ApplicationPage() {
                     <label>How many hours do you plan to commit per week?</label>
                     <input
                         type="number"
+                        min="1"
                         value={commitPerWeek}
                         onChange={(e) => setCommitPerWeek(e.target.value)}
                     />

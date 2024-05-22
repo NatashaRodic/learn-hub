@@ -8,6 +8,7 @@ export async function submitApplication(applicationData) {
 export async function getApplication(courseId) {
     return sendRequest(`${BASE_URL}/${courseId}`);
 }
+
 export async function getPendingApplications() {
     return sendRequest(`${BASE_URL}/pending`);
 }

@@ -1,6 +1,6 @@
 const Course = require('../../models/course');
 const Application = require('../../models/application');
-
+const User = require('../../models/user');
 
 module.exports = {
     index,
@@ -34,13 +34,15 @@ async function show(req, res) {
 
 async function create(req, res) {
     const { name, description, content, duration, skillLevel } = req.body;
+    const creator = await User.findById(req.user.id);
 
     const course = new Course({
         name: name,
         description: description,
         content: content,
         duration: duration,
-        skillLevel: skillLevel
+        skillLevel: skillLevel,
+        createdBy: creator
     });
 
     const savedCourse = await course.save();

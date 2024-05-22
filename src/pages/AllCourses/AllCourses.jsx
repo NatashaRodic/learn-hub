@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import * as coursesAPI from '../../utilities/courses-api';
 import * as applicationsAPI from '../../utilities/applications-api';
 import CourseCard from './CourseCard';
+import MyCourses from '../MyCourses/MyCourses';
 
 export default function AllCourses({ user }) {
   const [courses, setCourses] = useState([]);

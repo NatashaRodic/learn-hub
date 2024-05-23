@@ -39,7 +39,6 @@ export default function ApplicationPage() {
             }
             const response = await applicationsAPI.submitApplication(applicationData);
             setApplicationInfo(response);
-            console.log('Application submitted successfully:', response);
         } catch (err) {
             console.error('Error submitting application:', err);
         };
@@ -51,7 +50,7 @@ export default function ApplicationPage() {
             {courseInfo && (
                 <>
                     <h2>You're applying to... <span style={{ color: 'blue', fontSize: '24px', fontWeight: 'bold' }}>{courseInfo.name}</span></h2>
-                    <div className="courseDescription"><p>{courseInfo.content}</p></div>
+                    <div className="courseDescription"><p>{courseInfo.description}</p></div>
                 </>
             )}
             {applicationInfo ? (

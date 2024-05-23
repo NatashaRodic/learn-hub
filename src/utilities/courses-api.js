@@ -10,7 +10,6 @@ export async function getById(courseId) {
 }
 
 export async function getDetails(courseId) {
-    console.log(`${BASE_URL}/${courseId}/details`);
     return sendRequest(`${BASE_URL}/${courseId}/details`);
 }
 

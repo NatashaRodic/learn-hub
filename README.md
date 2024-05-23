@@ -25,6 +25,14 @@ Courses are created by teachers, and only teachers have the ability to create co
 
 ## 📸 Screenshots of the app
 
+### All Courses - Teacher's view
+
+![all-courses-teacher](/public/teachers_view.png)
+
+### My Courses - Student's view
+
+![my-courses-student](/public/students_view.png)
+
 ## 💻 Technologies used
 
 - React
@@ -39,13 +47,19 @@ Courses are created by teachers, and only teachers have the ability to create co
 
 ## Getting Started
 
-#### [Learn Hub - Live]() - Link to the deployed app on Heroku.
+#### [Learn Hub - Live](https://learn-hub-app-40020e0074fc.herokuapp.com/) - Link to the deployed app on Heroku.
 
 #### [Trello Board](https://trello.com/b/171T63jw/project-4) - Link to the Trello board with the user stories, ERD and wireframes.
 
 ## 📊 ERD - <a href="https://github.com/amandayclee?tab=overview&from=2024-05-01&to=2024-05-14">Yi Chien Lee</a>
 
+![erd](/public/erd_learn_hub.png)
+
 ## 🖼️ Wireframes - <a href="https://github.com/NatashaRodic">Natasha Rodic</a>
+
+![create_course_admin](/public/create_course_admin.png)
+
+![approval_screen](/public/approval_screen.png)
 
 ## 👤 User Stories - <a href="https://github.com/YassinHajjej" target="_blank">Yassin Hajjej</a>
 

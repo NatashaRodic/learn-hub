@@ -31,10 +31,6 @@ body {
   background-image: linear-gradient(0deg, rgb(160, 208, 203) 0%, #ddf1f3 100%);
 }
 
-.welcomeHeader {
-  color: rgb(28, 204, 125);
-}
-
 .coursePanel {
   display: flex;
   flex-direction: row;

@@ -36,7 +36,7 @@ function CourseCard({ courseInfo, onDelete, user }) {
     return (
         <div className='courseCard'>
             <h2>{courseInfo.name}</h2>
-            <div className="courseDescription"><p>{courseInfo.content}</p></div>
+            <div className="courseDescription"><p>{courseInfo.description}</p></div>
             <p className='details'>Duration: {courseInfo.duration} weeks</p>
             <p className='details'>Skill level required: {levelBars}</p>
 

@@ -39,7 +39,6 @@ export default function ApplicationPage() {
             }
             const response = await applicationsAPI.submitApplication(applicationData);
             setApplicationInfo(response);
-            console.log('Application submitted successfully:', response);
         } catch (err) {
             console.error('Error submitting application:', err);
         };

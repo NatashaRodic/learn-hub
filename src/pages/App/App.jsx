@@ -32,6 +32,7 @@ export default function App() {
             )}
             {user.role === 'student' && (
               <>
+                <Route path="/courses/my-courses" element={<MyCourses user={user} />} />
                 <Route path="/courses/:courseId/apply" element={<ApplicationPage />} />
               </>
             )}

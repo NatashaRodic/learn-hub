@@ -21,3 +21,6 @@ export async function denyApplication(applicationId) {
     return sendRequest(`${BASE_URL}/${applicationId}/deny`, 'PUT');
 }
 
+export async function getApplicationsByUser(userId) {
+    return sendRequest(`${BASE_URL}/user/${userId}`);
+}

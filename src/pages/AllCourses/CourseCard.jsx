@@ -10,13 +10,13 @@ function CourseCard({ courseInfo, onDelete, user }) {
         levelBars += " 🟩";
     }
 
-    useEffect(function () {
-        async function getApplication() {
-            const application = await applicationsAPI.getApplication(courseInfo._id);
-            setApplicationInfo(application);
-        }
-        getApplication();
-    }, []);
+    useEffect(() => {
+    async function getApplication() {
+        const application = await applicationsAPI.getApplication(courseInfo._id);
+        setApplicationInfo(application);
+    }
+    getApplication();
+}, [courseInfo._id]);
 
     // Handling the deletion of a course
     const handleDelete = async (e) => {

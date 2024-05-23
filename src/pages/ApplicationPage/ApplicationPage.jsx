@@ -50,7 +50,7 @@ export default function ApplicationPage() {
             {courseInfo && (
                 <>
                     <h2>You're applying to... <span style={{ color: 'blue', fontSize: '24px', fontWeight: 'bold' }}>{courseInfo.name}</span></h2>
-                    <div className="courseDescription"><p>{courseInfo.content}</p></div>
+                    <div className="courseDescription"><p>{courseInfo.description}</p></div>
                 </>
             )}
             {applicationInfo ? (

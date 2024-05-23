@@ -10,22 +10,20 @@ router.use(ensureLoggedIn);
 // GET /api/applications/pending
 router.get('/pending', requireRole('teacher'), applicationsCtrl.getPendingApplications);
 
-// GET
+// GET /api/applications/user/:userId
+router.get('/user/:userId', applicationsCtrl.getByUser);
+
+// GET /api/applications/:courseId
 router.get('/:courseId', applicationsCtrl.show);
 
 // POST /api/applications/
 router.post('/', requireRole('student'), applicationsCtrl.create);
-
-// GET /api/applications/pending
-router.get('/pending', applicationsCtrl.getPendingApplications);
-
-//GET /api/applications/:courseId
-router.get('/:courseId', applicationsCtrl.show);
 
 // PUT /api/applications/:id/approve
 router.put('/:id/approve', requireRole('teacher'), applicationsCtrl.approve);
 
 // PUT /api/applications/:id/deny
 router.put('/:id/deny', requireRole('teacher'), applicationsCtrl.deny);
+
 
 module.exports = router;

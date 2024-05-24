@@ -23,7 +23,7 @@ export default function ManageApplications() {
     };
 
     return (
-        <div>
+        <div className='courseCard'>
             <h1>Manage Applications</h1>
             {applications.length === 0 ? (
                 <p>No pending applications.</p>

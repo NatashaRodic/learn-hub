@@ -11,12 +11,12 @@ function CourseCard({ courseInfo, onDelete, user }) {
     }
 
     useEffect(() => {
-    async function getApplication() {
-        const application = await applicationsAPI.getApplication(courseInfo._id);
-        setApplicationInfo(application);
-    }
-    getApplication();
-}, [courseInfo._id]);
+        async function getApplication() {
+            const application = await applicationsAPI.getApplication(courseInfo._id);
+            setApplicationInfo(application);
+        }
+        getApplication();
+    }, [courseInfo._id]);
 
     // Handling the deletion of a course
     const handleDelete = async (e) => {
@@ -44,11 +44,11 @@ function CourseCard({ courseInfo, onDelete, user }) {
             {user.role === "teacher" ? (
                 <>
                     <span>
-                        <button onClick={() => handleDetailsClick(courseInfo._id)}>Details</button>
+                        <button onClick={() => handleDetailsClick(courseInfo._id)} className='approve-button-color'>Details</button>
                     </span>
                     {courseInfo.createdBy === user.id && (
                         <span>
-                            <button style={{ backgroundColor: "#4c0030" }} onClick={handleDelete}>
+                            <button onClick={handleDelete} className='delete-button-color'>
                                 Delete Course
                             </button>
                         </span>
@@ -58,7 +58,7 @@ function CourseCard({ courseInfo, onDelete, user }) {
                 <span>
                     {applicationInfo ? (
                         applicationInfo.status === 'approved' ? (
-                            <button onClick={() => handleDetailsClick(courseInfo._id)}>Details</button>
+                            <button onClick={() => handleDetailsClick(courseInfo._id)} >Details</button>
                         ) : (
                             <p>Your application is {applicationInfo.status}</p>
                         )
@@ -66,8 +66,9 @@ function CourseCard({ courseInfo, onDelete, user }) {
                         <button onClick={() => handleApplyClick(courseInfo._id)}>Apply</button>
                     )}
                 </span>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 }
 

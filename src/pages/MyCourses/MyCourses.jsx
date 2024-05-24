@@ -17,9 +17,12 @@ export default function MyCourses({ user }) {
           userCourses = courses.filter(course => course.createdBy === user.id);
         } else if (user.role === 'student') {
           const applications = await applicationsAPI.getApplicationsByUser(user.id);
-          userCourses = applications.map(application => application.course);
+          console.log('Applications fetched for student:', applications);
+          userCourses = applications
+            .filter(application => application && application.course) // Check for null or undefined applications
+            .map(application => application.course);
+          console.log('Courses from applications for student:', userCourses);
         }
-
         setMyCourses(userCourses);
       } catch (err) {
         console.error('Error fetching courses or applications:', JSON.stringify(err));

@@ -4,6 +4,7 @@ import * as applicationsAPI from '../../utilities/applications-api';
 
 function CourseCard({ courseInfo, onDelete, user }) {
     const [applicationInfo, setApplicationInfo] = useState(null);
+    console.log(`course info ${courseInfo}`);
     // Constructing the skill level bars based on the skill level of the course
     let levelBars = "";
     for (let index = 0; index < courseInfo.skillLevel; index++) {

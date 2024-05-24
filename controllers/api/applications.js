@@ -93,6 +93,7 @@ async function getPendingApplications(req, res) {
 }
 async function getByUser(req, res) {
     try {
+        console.log(`req.body ${JSON.stringify(req.body)}`)
         const applications = await Application.find({ user: req.params.userId, status: 'approved' }).populate('course');
         res.json(applications);
     } catch (err) {

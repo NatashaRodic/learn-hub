@@ -32,7 +32,15 @@ app.use('/api/applications', ensureLoggedIn, require('./routes/api/applications'
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX/API requests
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(
+    path.join(__dirname, 'build', 'index.html'),
+    function (err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+    }
+
+  );
 });
 
 app.listen(port, function () {
